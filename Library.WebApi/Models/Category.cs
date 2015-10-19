@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
+using Newtonsoft.Json;
 
 namespace Library.WebApi.Models
 {
@@ -19,7 +20,7 @@ namespace Library.WebApi.Models
         [Required]
         public string CategoryName { get; set; }
         public string CategoryDescription { get; set; }
-
+        [JsonIgnore]
         public virtual ICollection<Book> Books { get; set; }
     }
 }
