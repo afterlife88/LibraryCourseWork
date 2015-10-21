@@ -98,7 +98,9 @@
     <Compile Include="Controllers\AuthorsController.cs" />
     <Compile Include="Controllers\BooksController.cs" />
     <Compile Include="Controllers\CategoriesController.cs" />
+    <Compile Include="Data\AuthorsRepository.cs" />
     <Compile Include="Data\BooksRepository.cs" />
+    <Compile Include="Data\Interfaces\IAuthorsRepository.cs" />
     <Compile Include="Data\Interfaces\IBooksRepository.cs" />
     <Compile Include="Data\LibraryDbContext.cs" />
     <Compile Include="Global.asax.cs">

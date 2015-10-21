@@ -1,14 +1,16 @@
-﻿using System.Collections;
+﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Library.WebApi.Models;
 
 namespace Library.WebApi.Data.Interfaces
 {
-    public interface IBooksRepository
+    public interface IBooksRepository : IDisposable
     {
-        IEnumerable GettAll();
-        Book Get(int id);
-        Book Add(Book item);
-        void Remove(int id);
+        Task<IEnumerable<Book>> GettAllAsync();
+        Task<Book> GetAsync(int id);
+        Task<Book> AddAsync(Book item);
+        Task<Book> UpdateAsync(Book item);
+        Task<object> RemoveAsync(int id);
     }
 }
