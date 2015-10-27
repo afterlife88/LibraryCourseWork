@@ -11,6 +11,6 @@ namespace Library.WebApi.Data.Interfaces
         Task<Book> GetAsync(int id);
         Task<Book> AddAsync(Book item);
         Task<Book> UpdateAsync(Book item);
-        Task<object> RemoveAsync(int id);
+        Task<object> RemoveAsync(Book item);
     }
 }
