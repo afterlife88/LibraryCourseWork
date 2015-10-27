@@ -18,32 +18,32 @@ namespace Library.WebApi.Data
         }
         public async Task<IEnumerable<Book>> GettAllAsync()
         {
-            byte[] picBytes = File.ReadAllBytes("F:\\eldjeron.jpg");
-            byte[] fileTxtBytes = File.ReadAllBytes("F:\\цветы для элджерона.txt");
-            Author keez = new Author { FirstName = "Дэниел", LastName = "Киз" };
-            Category scineceFantastic = new Category()
-            {
-                CategoryName = "научно-фантастический рассказ",
-                CategoryDescription = "Научная фантастика описывает вымышленные технологии и научные открытия, "
-            };
-            Book billiMiligan = new Book()
-            {
-                BookName = "Билли милиган",
-                ISBN = "0-15-131510-8",
-                NumberOfPages = 223,
-                Category = scineceFantastic,
-                ImageOfBook = picBytes,
-                FileTxt = fileTxtBytes,
-                Author = keez,
-            };
-            Book eldjeron = new Book()
-            {
-                BookName = "Цветы для Элджернона",
-                ISBN = "0-15-131510-8",
-                NumberOfPages = 311,
-                Category = scineceFantastic,
-                Author = keez,
-            };
+            //byte[] picBytes = File.ReadAllBytes("F:\\eldjeron.jpg");
+            //byte[] fileTxtBytes = File.ReadAllBytes("F:\\цветы для элджерона.txt");
+            //Author keez = new Author { FirstName = "Дэниел", LastName = "Киз" };
+            //Category scineceFantastic = new Category()
+            //{
+            //    CategoryName = "научно-фантастический рассказ",
+            //    CategoryDescription = "Научная фантастика описывает вымышленные технологии и научные открытия, "
+            //};
+            //Book billiMiligan = new Book()
+            //{
+            //    BookName = "Билли милиган",
+            //    ISBN = "0-15-131510-8",
+            //    NumberOfPages = 223,
+            //    Category = scineceFantastic,
+            //    ImageOfBook = picBytes,
+            //    FileTxt = fileTxtBytes,
+            //    Author = keez,
+            //};
+            //Book eldjeron = new Book()
+            //{
+            //    BookName = "Цветы для Элджернона",
+            //    ISBN = "0-15-131510-8",
+            //    NumberOfPages = 311,
+            //    Category = scineceFantastic,
+            //    Author = keez,
+            //};
             return await _dbContext.Books.ToArrayAsync();
             // ADD SOME DATA
             //_dbContext.Books.Add(billiMiligan);
