@@ -18,35 +18,6 @@ namespace Library.WebApi.Data
         }
         public async Task<IEnumerable<Book>> GettAllAsync()
         {
-<<<<<<< HEAD
-            //byte[] picBytes = File.ReadAllBytes("F:\\eldjeron.jpg");
-            //byte[] fileTxtBytes = File.ReadAllBytes("F:\\цветы для элджерона.txt");
-            //Author keez = new Author { FirstName = "Дэниел", LastName = "Киз" };
-            //Category scineceFantastic = new Category()
-            //{
-            //    CategoryName = "научно-фантастический рассказ",
-            //    CategoryDescription = "Научная фантастика описывает вымышленные технологии и научные открытия, "
-            //};
-            //Book billiMiligan = new Book()
-            //{
-            //    BookName = "Билли милиган",
-            //    ISBN = "0-15-131510-8",
-            //    NumberOfPages = 223,
-            //    Category = scineceFantastic,
-            //    ImageOfBook = picBytes,
-            //    FileTxt = fileTxtBytes,
-            //    Author = keez,
-            //};
-            //Book eldjeron = new Book()
-            //{
-            //    BookName = "Цветы для Элджернона",
-            //    ISBN = "0-15-131510-8",
-            //    NumberOfPages = 311,
-            //    Category = scineceFantastic,
-            //    Author = keez,
-            //};
-=======
->>>>>>> refs/remotes/origin/master
             return await _dbContext.Books.ToArrayAsync();
         }
         public async Task<Book> GetAsync(int id)
