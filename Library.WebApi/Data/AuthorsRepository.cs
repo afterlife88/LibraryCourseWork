@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
-using System.Web;
 using Library.WebApi.Data.Interfaces;
 using Library.WebApi.Models;
 
@@ -22,17 +21,22 @@ namespace Library.WebApi.Data
         {
             return await _dbContext.Authors.ToArrayAsync();
         }
-
         public async Task<Author> GetAsync(int id)
         {
             return await _dbContext.Authors.SingleOrDefaultAsync(r => r.AuthorId == id);
         }
-
         public async Task<IEnumerable> GetBooksByAuthor(int id)
         {
             var item = await _dbContext.Authors.SingleOrDefaultAsync(r => r.AuthorId == id);
             return item.Books.ToArray();
         }
+
+        public async Task<IEnumerable> GetBooksByAuthor(string lastName)
+        {
+            var item = await _dbContext.Authors.SingleOrDefaultAsync(r => r.LastName == lastName);
+            return item.Books.ToArray();
+        }
+
         public async Task<Author> AddAsync(Author item)
         {
             Author existingAuthor = await _dbContext.Authors.SingleOrDefaultAsync(r =>
@@ -51,10 +55,9 @@ namespace Library.WebApi.Data
             await _dbContext.SaveChangesAsync();
             return item;
         }
-
         public async Task<Author> UpdateAsync(Author item)
         {
-            var updateAuthor = await _dbContext.Authors.SingleOrDefaultAsync(r => r.AuthorId == 1);
+            var updateAuthor = await _dbContext.Authors.SingleOrDefaultAsync(r => r.AuthorId == item.AuthorId);
 
             if (updateAuthor != null)
             {

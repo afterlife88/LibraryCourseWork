@@ -18,63 +18,7 @@ namespace Library.WebApi.Data
         }
         public async Task<IEnumerable<Book>> GettAllAsync()
         {
-            byte[] picBytes = File.ReadAllBytes("F:\\eldjeron.jpg");
-            byte[] fileTxtBytes = File.ReadAllBytes("F:\\цветы для элджерона.txt");
-            Author keez = new Author { FirstName = "Дэниел", LastName = "Киз" };
-            Category scineceFantastic = new Category()
-            {
-                CategoryName = "научно-фантастический рассказ",
-                CategoryDescription = "Научная фантастика описывает вымышленные технологии и научные открытия, "
-            };
-            Book billiMiligan = new Book()
-            {
-                BookName = "Билли милиган",
-                ISBN = "0-15-131510-8",
-                NumberOfPages = 223,
-                Category = scineceFantastic,
-                ImageOfBook = picBytes,
-                FileTxt = fileTxtBytes,
-                Author = keez,
-            };
-            Book eldjeron = new Book()
-            {
-                BookName = "Цветы для Элджернона",
-                ISBN = "0-15-131510-8",
-                NumberOfPages = 311,
-                Category = scineceFantastic,
-                Author = keez,
-            };
             return await _dbContext.Books.ToArrayAsync();
-            // ADD SOME DATA
-            //_dbContext.Books.Add(billiMiligan);
-            //_dbContext.Books.Add(eldjeron);
-            //_dbContext.SaveChanges();
-
-            // КОСТЫЛЬ
-            //List<Book> books = new List<Book>();
-            //var ave =  _dbContext.Authors.ToList();
-            //foreach (var author in ave)
-            //{
-            //   var collection =  author.Books.ToArray();
-            //    foreach (var a in collection)
-            //    {
-
-            //        books.Add(new Book()
-            //        {
-            //           Author = a.Author,
-            //           BookId = a.BookId,
-            //           ImageOfBook =  a.ImageOfBook,
-            //           FileTxt = a.FileTxt,
-            //           Category = a.Category,
-            //           AuthorId = a.AuthorId,
-            //           BookName = a.BookName,
-            //           CategoryId = a.CategoryId,
-            //           ISBN = a.ISBN,
-            //           NumberOfPages = a.NumberOfPages
-            //        });
-            //    }
-            //}
-            //return books;
         }
         public async Task<Book> GetAsync(int id)
         {
@@ -82,10 +26,10 @@ namespace Library.WebApi.Data
         }
         public async Task<Book> AddAsync(Book item)
         {
-            Author existingAuthor = await _dbContext.Authors.SingleOrDefaultAsync(r =>
+            Author existingAuthor = await _dbContext.Authors.FirstOrDefaultAsync(r =>
                r.FirstName.ToUpper() == item.Author.FirstName.ToUpper() &&
                r.LastName.ToUpper() == item.Author.LastName.ToUpper());
-            Category category = await _dbContext.Categories.SingleOrDefaultAsync(r =>
+            Category category = await _dbContext.Categories.FirstOrDefaultAsync(r =>
                 r.CategoryName.ToUpper() == item.Category.CategoryName.ToUpper());
             if (existingAuthor != null && category != null)
             {
@@ -93,6 +37,7 @@ namespace Library.WebApi.Data
                 item.Category = category;
                 _dbContext.Books.Add(item);
                 _dbContext.SaveChanges();
+                return item;
             }
             Author newAuthor = new Author()
             {
@@ -102,7 +47,7 @@ namespace Library.WebApi.Data
             Category newCategory = new Category()
             {
                 CategoryName = item.Category.CategoryName,
-                CategoryDescription = item.Category.CategoryName,
+                CategoryDescription = item.Category.CategoryDescription,
             };
             item.Author = newAuthor;
             item.Category = newCategory;
@@ -113,16 +58,16 @@ namespace Library.WebApi.Data
         //геморно юзать это
         public async Task<Book> UpdateAsync(Book item)
         {
-            var updateValue = await _dbContext.Books.SingleOrDefaultAsync(r => r.BookId == item.BookId);
+            var updateValue = await _dbContext.Books.SingleOrDefaultAsync(r => r.BookName == item.BookName);
             if (updateValue != null)
             {
-                updateValue.Author = item.Author;
+                //updateValue.Author = item.Author;
                 updateValue.BookName = item.BookName;
-                updateValue.Category = item.Category;
+                //updateValue.Category = item.Category;
                 updateValue.ISBN = item.ISBN;
                 updateValue.NumberOfPages = updateValue.NumberOfPages;
-                updateValue.FileTxt = updateValue.FileTxt;
-                updateValue.ImageOfBook = updateValue.ImageOfBook;
+               // updateValue.FileTxt = updateValue.FileTxt;
+                //updateValue.ImageOfBook = updateValue.ImageOfBook;
                 _dbContext.Books.Attach(updateValue);
                 _dbContext.Entry(updateValue).State = EntityState.Modified;
 
@@ -131,16 +76,10 @@ namespace Library.WebApi.Data
             }
             return null;
         }
-        public async Task<object> RemoveAsync(int id)
+        public async Task<object> RemoveAsync(Book item)
         {
-            var item = await _dbContext.Books.FirstOrDefaultAsync(r => r.BookId == id);
-            if (item != null)
-            {
-                _dbContext.Books.Remove(item);
-                return await _dbContext.SaveChangesAsync();
-            }
-            return null;
-
+            _dbContext.Books.Remove(item);
+            return await _dbContext.SaveChangesAsync();
         }
         public void Dispose(bool disposing)
         {

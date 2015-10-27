@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -14,8 +13,10 @@ namespace Library.WebApi.Models
         [Key, Column(Order = 1), DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int BookId { get; set; }
         //ForeignKey bookauthor
+        [JsonIgnore]
         public int AuthorId { get; set; }
         //foreignkey catgory
+        [JsonIgnore]
         public int CategoryId { get; set; }
         [Required]
         public string BookName { get; set; }
