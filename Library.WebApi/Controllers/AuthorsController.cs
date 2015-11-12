@@ -20,9 +20,9 @@ namespace Library.WebApi.Controllers
             _repository = repository;
         }
         /// <summary>
-        /// Дает всех авторов которые есть
+        /// Return all authors in DB
         /// </summary>
-        /// <returns>JSON с id, firstName, lastName авторов</returns>
+        /// <returns>JSON with id, firstName, lastName authors</returns>
         [HttpGet]
         [ResponseType(typeof(IEnumerable<Author>))]
         public async Task<IHttpActionResult> Get()
@@ -31,10 +31,10 @@ namespace Library.WebApi.Controllers
             return Ok(books);
         }
         /// <summary>
-        /// Дает информацию о авторе
+        /// Get info about concrete author
         /// </summary>
-        /// <param name="id">Id автора</param>
-        /// <returns>JSON с id, firstName, lastName автора</returns>
+        /// <param name="id">Id author</param>
+        /// <returns>JSON с id, firstName, lastName author</returns>
         [HttpGet]
         [ResponseType(typeof(Author))]
         public async Task<IHttpActionResult> Get(int id)
@@ -45,9 +45,9 @@ namespace Library.WebApi.Controllers
             return NotFound();
         }
         /// <summary>
-        /// Возвращает все книги автора по фамилии
+        /// Return all books by second name of author
         /// </summary>
-        /// <param name="lastName">Фамилия автора книги</param>
+        /// <param name="lastName">Last name author</param>
         /// <returns></returns>
         [HttpGet]
         [Route("api/authors/books/findbyname/{lastName}")]
@@ -60,9 +60,9 @@ namespace Library.WebApi.Controllers
             return NotFound();
         }
         /// <summary>
-        /// Возвращает все книги автора по айдишке
+        /// Return all books by concrete author
         /// </summary>
-        /// <param name="id">Id автора</param>
+        /// <param name="id">Id author</param>
         /// <returns></returns>
         [HttpGet]
         [Route("api/authors/books/{id}")]
@@ -75,9 +75,9 @@ namespace Library.WebApi.Controllers
             return NotFound();
         }
         /// <summary>
-        /// Добавляет автора
+        /// Add author
         /// </summary>
-        /// <param name="item">Свойства автора</param>
+        /// <param name="item">object of created author</param>
         /// <returns></returns>
         [HttpPost]
         public async Task<IHttpActionResult> PostAuthor([FromBody]Author item)
@@ -88,7 +88,7 @@ namespace Library.WebApi.Controllers
             return Ok(addedItem);
         }
         /// <summary>
-        /// Обновляет свойства автора
+        /// Update author
         /// </summary>
         /// <param name="item"></param>
         /// <returns></returns>
@@ -102,7 +102,7 @@ namespace Library.WebApi.Controllers
             return Ok(itemToUpdate);
         }
         /// <summary>
-        /// Удаляет автора из базы
+        /// Delete the author
         /// </summary>
         /// <param name="id">Id автора</param>
         /// <returns></returns>

@@ -24,7 +24,7 @@ namespace Library.WebApi.Controllers
             _repository = repository;
         }
         /// <summary>
-        /// Возвращает все книги которые есть в базе
+        /// Return all books form db
         /// </summary>
         /// <returns></returns>
         [HttpGet]
@@ -35,9 +35,9 @@ namespace Library.WebApi.Controllers
             return Ok(books);
         }
         /// <summary>
-        /// Возвращает конкретную книгу
+        /// Return concrete book
         /// </summary>
-        /// <param name="id">Id книги</param>
+        /// <param name="id">Id book</param>
         /// <returns></returns>
         [HttpGet]
         [ResponseType(typeof(Book))]
@@ -49,10 +49,10 @@ namespace Library.WebApi.Controllers
             return NotFound();
         }
         /// <summary>
-        /// Добавляет книгу
+        /// Add book
         /// </summary>
         /// <param name="item"></param>
-        /// <returns>201 и урл с айдишкой книги</returns>
+        /// <returns>201 и with url id</returns>
         [HttpPost]
         public async Task<IHttpActionResult> PostBook([FromBody] Book item)
         {
@@ -62,10 +62,10 @@ namespace Library.WebApi.Controllers
             return Ok(addedItem);
         }
         /// <summary>
-        /// Удаляет из базы книгу
+        /// Delete book from db
         /// </summary>
-        /// <param name="id">Id книги</param>
-        /// <returns>200 если успешно удалило или 404 если не нашло</returns>
+        /// <param name="id">Id bok</param>
+        /// <returns>200 if delete 404 if notfound</returns>
         [HttpDelete]
         [Route("api/books/removebook/{id}")]
         public async Task<IHttpActionResult> DeleteBook(int id)
@@ -78,7 +78,7 @@ namespace Library.WebApi.Controllers
             return Ok();
         }
         /// <summary>
-        /// Обновляет значения которые пришли из тела
+        /// Update book
         /// </summary>
         /// <param name="item"></param>
         /// <returns></returns>
@@ -92,9 +92,9 @@ namespace Library.WebApi.Controllers
             return Ok(updateItem);
         }
         /// <summary>
-        /// Возвращает картинку книги по Id 
+        /// Return a picture from book
         /// </summary>
-        /// <param name="id">Id книги</param>
+        /// <param name="id">Id book</param>
         /// <returns></returns>
         [HttpGet]
         [Route("api/books/picture/{id}")]

@@ -25,7 +25,7 @@ namespace Library.WebApi.Controllers
         }
 
         /// <summary>
-        /// Возвращает все категории
+        /// return all categiries
         /// </summary>
         /// <returns></returns>
         [HttpGet]
@@ -37,7 +37,7 @@ namespace Library.WebApi.Controllers
             return Ok(items);
         }
         /// <summary>
-        /// Возвращает категорию по id
+        /// Return category by id
         /// </summary>
         /// <param name="id">Id категории</param>
         /// <returns></returns>
