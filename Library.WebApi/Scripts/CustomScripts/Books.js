@@ -1,19 +1,12 @@
 ﻿(function () {
-  
-    $(document).ready(function () {
-      
-   
     var baseUri = "api/books";
 
     function loadAllBooks() {
         $.ajax(
         {
             url: baseUri,
-          
             success: function (listBooks) {
-
                 var table = $("#booksTable");
-              //  table.empty();
                 for (var i = 0; i < listBooks.length; i++) {
                     var bookId = listBooks[i].bookId;
                     var authorName = listBooks[i].author.firstName;
@@ -28,4 +21,4 @@
         });
     }
     loadAllBooks();
-    }) })();
+})();
