@@ -19,7 +19,7 @@ namespace Library.WebApi.Models
         public string FirstName { get; set; }
         [Required]
         public string LastName { get; set; }
-       [JsonIgnore]
+        [JsonIgnore]
         public virtual ICollection<Book> Books { get; set; }
     }
 }

@@ -20,7 +20,6 @@ namespace Library.WebApi.Models
         //ForeignKey bookauthor
         [JsonIgnore]
         public int AuthorId { get; set; }
-        
         //foreignkey catgory
         [JsonIgnore]
         public int CategoryId { get; set; }
@@ -38,6 +37,7 @@ namespace Library.WebApi.Models
         public byte[] FileTxt { get; set; }
         public string ISBN { get; set; }
         public virtual Author Author { get; set; }
+
         public virtual ICollection<User> OwnersUsers { get; set; }
         public virtual Category Category { get; set; }
 

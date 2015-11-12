@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Data.Entity;
-using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
-using System.Web;
 using Library.WebApi.Data.Interfaces;
 using Library.WebApi.Models;
 
@@ -29,11 +24,8 @@ namespace Library.WebApi.Data
             }
             return null;
         }
-
         public async Task<User> ValidateUser(User user)
         {
-
-            // Возвращает объект юзера или нал, по этому проверку на нал дальше не делаю 
             var findedUser = await _dbContext.Users.FirstOrDefaultAsync(r => r.Surname == user.Surname
                                                             && r.Password == user.Password);
             return findedUser;
@@ -41,28 +33,47 @@ namespace Library.WebApi.Data
 
         public async Task<User> GetUser(int id)
         {
-            return null;
-            // return await _dbContext.Users.FirstOrDefaultAsync(r => r.Id == id);
+            return await _dbContext.Users.FirstOrDefaultAsync(r => r.UserId == id);
         }
-
-        public async Task<User> AddBook(int id, Book book)
+        /// <summary>
+        /// Add a book to current user selected by ID
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="item"></param>
+        /// <returns></returns>
+        public async Task<Book> AddBook(int id, Book item)
         {
-           // var obj  = _dbContext.Users
+            // var obj  = _dbContext.Users
             var findedUser = await _dbContext.Users.FirstOrDefaultAsync(r => r.UserId == id);
             if (findedUser != null)
             {
-                var bookDb = new Book();
-                bookDb.OwnersUsers.Add(findedUser);
-                _dbContext.Books.Add(bookDb);
-
-                //findedUser.Books.Add(new Book()
-                //{
-                //    BookName = book.BookName
-                //});
-                //_dbContext.Users.Add(findedUser);
+                var book = await _dbContext.Books.FirstOrDefaultAsync(r => r.BookName == item.BookName);
+                book.OwnersUsers.Add(findedUser);
+                findedUser.Books.Add(book);
+                _dbContext.Books.Attach(book);
+                _dbContext.Users.Attach(findedUser);
+                _dbContext.Entry(findedUser).State = EntityState.Modified;;
+                _dbContext.Entry(book).State = EntityState.Modified;
                 await _dbContext.SaveChangesAsync();
-                return findedUser;
-
+                return book;
+            }
+            return null;
+        }
+        public async Task<Book> RemoveBook(int id, Book item)
+        {
+            // var obj  = _dbContext.Users
+            var findedUser = await _dbContext.Users.FirstOrDefaultAsync(r => r.UserId == id);
+            if (findedUser != null)
+            {
+                var book = await _dbContext.Books.FirstOrDefaultAsync(r => r.BookName == item.BookName);
+                book.OwnersUsers.Remove(findedUser);
+                findedUser.Books.Remove(book);
+                //_dbContext.Books.Attach(book);
+                //_dbContext.Users.Attach(findedUser);
+                //_dbContext.Entry(findedUser).State = EntityState.Modified; ;
+                //_dbContext.Entry(book).State = EntityState.Modified;
+                await _dbContext.SaveChangesAsync();
+                return book;
             }
             return null;
         }

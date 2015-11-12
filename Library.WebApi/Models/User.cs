@@ -12,6 +12,10 @@ namespace Library.WebApi.Models
     /// </summary>
     public class User
     {
+        public User()
+        {
+            Books = new HashSet<Book>();
+        }
         public int UserId { get; set; }
         [Required]
         public string Password { get; set; }
@@ -19,8 +23,9 @@ namespace Library.WebApi.Models
         public string Name { get; set; }
         [Required]
         public string Surname { get; set; }
-
-     
+        [JsonIgnore]
+        public virtual ICollection<Book> Books { get; set; } 
+        
     }
 
 }

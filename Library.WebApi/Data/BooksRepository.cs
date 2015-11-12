@@ -55,7 +55,6 @@ namespace Library.WebApi.Data
             await _dbContext.SaveChangesAsync();
             return item;
         }
-        //геморно юзать это
         public async Task<Book> UpdateAsync(Book item)
         {
             var updateValue = await _dbContext.Books.SingleOrDefaultAsync(r => r.BookName == item.BookName);
@@ -66,7 +65,7 @@ namespace Library.WebApi.Data
                 //updateValue.Category = item.Category;
                 updateValue.ISBN = item.ISBN;
                 updateValue.NumberOfPages = updateValue.NumberOfPages;
-               // updateValue.FileTxt = updateValue.FileTxt;
+                // updateValue.FileTxt = updateValue.FileTxt;
                 //updateValue.ImageOfBook = updateValue.ImageOfBook;
                 _dbContext.Books.Attach(updateValue);
                 _dbContext.Entry(updateValue).State = EntityState.Modified;

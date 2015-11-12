@@ -1,11 +1,4 @@
-﻿using System;
-using System.CodeDom;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Runtime.InteropServices;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
 using Library.WebApi.Data;
@@ -52,16 +45,31 @@ namespace Library.WebApi.Controllers
         /// add books to user
         /// </summary>
         /// <param name="id">user id</param>
-        /// <param name="book">pbject of book</param>
+        /// <param name="book">object of book</param>
         /// <returns></returns>
         [Route("api/users/addbook/{id}")]
+        [HttpPost]
         public async Task<IHttpActionResult> AddBook(int id, [FromBody] Book book)
         {
             var user = await _repository.AddBook(id, book);
-            return Ok(user);
-
+            if (user != null)
+            {
+                return Ok(user);
+            }
+            return NotFound();
         }
-            /// <summary>
+        [Route("api/users/removebook/{id}")]
+        [HttpPost]
+        public async Task<IHttpActionResult> RemoveBook(int id, [FromBody] Book book)
+        {
+            var user = await _repository.RemoveBook(id, book);
+            if (user != null)
+            {
+                return Ok(user);
+            }
+            return NotFound();
+        }
+        /// <summary>
         /// user validation 
         /// </summary>
         /// <param name="user"></param>
@@ -77,7 +85,7 @@ namespace Library.WebApi.Controllers
                 return Ok(findeduser);
             }
             return NotFound();
-        } 
+        }
 
     }
 }

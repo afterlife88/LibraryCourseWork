@@ -12,6 +12,7 @@ namespace Library.WebApi.Data.Interfaces
         Task<User> RegistrateUser(User user);
         Task<User> ValidateUser(User user);
         Task<User> GetUser(int id);
-        Task<User> AddBook(int id, Book book);
+        Task<Book> AddBook(int id, Book book);
+        Task<Book> RemoveBook(int id, Book item);
     }
 }
