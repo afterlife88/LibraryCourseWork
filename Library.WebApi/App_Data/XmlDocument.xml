@@ -580,5 +580,23 @@
             <param name="id">Id книги</param>
             <returns></returns>
         </member>
+        <member name="T:Library.WebApi.Controllers.CategoriesController">
+            <summary>
+            api categories
+            </summary>
+        </member>
+        <member name="M:Library.WebApi.Controllers.CategoriesController.GetAll">
+            <summary>
+            Возвращает все категории
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Library.WebApi.Controllers.CategoriesController.Get(System.Int32)">
+            <summary>
+            Возвращает категорию по id
+            </summary>
+            <param name="id">Id категории</param>
+            <returns></returns>
+        </member>
     </members>
 </doc>
