@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 using Library.WebApi.Data.Interfaces;
 using Library.WebApi.Models;
@@ -19,6 +20,11 @@ namespace Library.WebApi.Data
         public async Task<IEnumerable<Book>> GettAllAsync()
         {
             return await _dbContext.Books.ToArrayAsync();
+        }
+
+        public IQueryable<Book> GetAllBooksOdata()
+        {
+            return  _dbContext.Books.AsQueryable<Book>();
         }
         public async Task<Book> GetAsync(int id)
         {

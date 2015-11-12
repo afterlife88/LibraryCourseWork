@@ -1,11 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
+using System.Web.Http.OData;
 using Library.WebApi.Data;
 using Library.WebApi.Data.Interfaces;
 using Library.WebApi.Models;
@@ -23,7 +25,16 @@ namespace Library.WebApi.Controllers
         {
             _repository = repository;
         }
-        /// <summary>
+        //[Route("api/books/odata")]
+        //[HttpGet]
+        //[EnableQuery]
+        //[ResponseType(typeof(IEnumerable<Book>))]
+        //public IQueryable<Book> AllBooksQueryable()
+        //{
+          
+        //    return _repository.GetAllBooksOdata();
+        //}
+            /// <summary>
         /// Return all books form db
         /// </summary>
         /// <returns></returns>
