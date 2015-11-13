@@ -6,11 +6,11 @@ using Library.WebApi.Models;
 
 namespace Library.WebApi.Data
 {
-    public class UserRepository : IUserRepository
+    public class UsersRepository : IUserRepository
     {
         private bool _disposed;
         private readonly LibraryDbContext _dbContext;
-        public UserRepository()
+        public UsersRepository()
         {
             _dbContext = new LibraryDbContext();
         }
@@ -49,6 +49,7 @@ namespace Library.WebApi.Data
             {
                 var book = await _dbContext.Books.FirstOrDefaultAsync(r => r.BookName == item.BookName);
                 book.OwnersUsers.Add(findedUser);
+                book.BooksLeft--;
                 findedUser.Books.Add(book);
                 _dbContext.Books.Attach(book);
                 _dbContext.Users.Attach(findedUser);
@@ -66,6 +67,8 @@ namespace Library.WebApi.Data
             if (findedUser != null)
             {
                 var book = await _dbContext.Books.FirstOrDefaultAsync(r => r.BookName == item.BookName);
+                book.BooksLeft++;
+                _dbContext.Entry(book).State = EntityState.Modified;
                 book.OwnersUsers.Remove(findedUser);
                 findedUser.Books.Remove(book);
                 //_dbContext.Books.Attach(book);

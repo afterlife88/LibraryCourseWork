@@ -11,7 +11,7 @@ namespace Library.WebApi.Controllers
     {
         private readonly IUserRepository _repository;
 
-        public UsersController() : this(new UserRepository()) { }
+        public UsersController() : this(new UsersRepository()) { }
         public UsersController(IUserRepository repository)
         {
             _repository = repository;

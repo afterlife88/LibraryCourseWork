@@ -201,7 +201,7 @@
     <Compile Include="Data\Interfaces\ICategoriesRepository.cs" />
     <Compile Include="Data\Interfaces\IUserRepository.cs" />
     <Compile Include="Data\LibraryDbContext.cs" />
-    <Compile Include="Data\UserRepository.cs" />
+    <Compile Include="Data\UsersRepository.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
