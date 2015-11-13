@@ -24,19 +24,17 @@ namespace Library.WebApi.Models
         [JsonIgnore]
         public int CategoryId { get; set; }
         [Required]
-       // [DataType()]
         public string BookName { get; set; }
         public int NumberOfPages { get; set; }
+        public string BookDescription { get; set; }
+        public int YearOfBook { get; set; }
+        public string OriginalNameOfBook { get; set; }
         /// <summary>
         /// Количество книг которые остались
         /// </summary>
         public int BooksLeft { get; set; }
-        [Column(TypeName = "image")]
-        [JsonIgnore]
-        public byte[] ImageOfBook { get; set; }
         public string ISBN { get; set; }
         public virtual Author Author { get; set; }
-
         public virtual ICollection<User> OwnersUsers { get; set; }
         public virtual Category Category { get; set; }
 

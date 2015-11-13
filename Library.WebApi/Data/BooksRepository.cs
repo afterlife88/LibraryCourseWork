@@ -66,13 +66,16 @@ namespace Library.WebApi.Data
             var updateValue = await _dbContext.Books.SingleOrDefaultAsync(r => r.BookName == item.BookName);
             if (updateValue != null)
             {
-                //updateValue.Author = item.Author;
+                updateValue.Author = item.Author;
                 updateValue.BookName = item.BookName;
-                //updateValue.Category = item.Category;
+                updateValue.Category = item.Category;
                 updateValue.ISBN = item.ISBN;
                 updateValue.NumberOfPages = updateValue.NumberOfPages;
-                // updateValue.FileTxt = updateValue.FileTxt;
-                //updateValue.ImageOfBook = updateValue.ImageOfBook;
+                updateValue.BookDescription = updateValue.BookDescription;
+                updateValue.NumberOfPages = updateValue.NumberOfPages;
+                updateValue.YearOfBook = updateValue.YearOfBook;
+                updateValue.OriginalNameOfBook = updateValue.OriginalNameOfBook;
+                
                 _dbContext.Books.Attach(updateValue);
                 _dbContext.Entry(updateValue).State = EntityState.Modified;
 

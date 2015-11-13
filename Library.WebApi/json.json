@@ -1,0 +1,17 @@
+﻿{  
+  "bookName": "Граф Монте-Кристо",
+  "numberOfPages": 1088,
+  "bookDescription": "В книге представлен один из самых захватывающих приключенческих романов классика французской литературы XIX века Александра Дюма.",
+  "yearOfBook": 1844,
+  "originalNameOfBook": "Le comte de Monte Cristo",
+  "booksLeft": 144,
+  "isbn": "978-5-17-073094-0",
+  "author": {    
+    "firstName": "Александр",
+    "lastName": "Дюма"
+  },
+  "category": {    
+    "categoryName": "Приключенческий роман"
+    
+  }
+}

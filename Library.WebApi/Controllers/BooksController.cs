@@ -102,26 +102,21 @@ namespace Library.WebApi.Controllers
             if (updateItem == null) return NotFound();
             return Ok(updateItem);
         }
-        /// <summary>
-        /// Return a picture from book
-        /// </summary>
-        /// <param name="id">Id book</param>
-        /// <returns></returns>
-        [HttpGet]
-        [Route("api/books/picture/{id}")]
-        public async Task<HttpResponseMessage> GetPicture(int id)
-        {
-            var data = await _repository.GetAsync(id);
-            if (data != null)
-            {
-                byte[] imgData = data.ImageOfBook;
-                MemoryStream ms = new MemoryStream(imgData);
-                HttpResponseMessage response = new HttpResponseMessage(HttpStatusCode.OK) { Content = new StreamContent(ms) };
-                response.Content.Headers.ContentType = new MediaTypeHeaderValue("image/jpeg");
-                return response;
-            }
-            return Request.CreateResponse(HttpStatusCode.NotFound, "Not Found");
-        }
+        //[HttpGet]
+        //[Route("api/books/picture/{id}")]
+        //public async Task<HttpResponseMessage> GetPicture(int id)
+        //{
+        //    var data = await _repository.GetAsync(id);
+        //    if (data != null)
+        //    {
+        //        byte[] imgData = data.ImageOfBook;
+        //        MemoryStream ms = new MemoryStream(imgData);
+        //        HttpResponseMessage response = new HttpResponseMessage(HttpStatusCode.OK) { Content = new StreamContent(ms) };
+        //        response.Content.Headers.ContentType = new MediaTypeHeaderValue("image/jpeg");
+        //        return response;
+        //    }
+        //    return Request.CreateResponse(HttpStatusCode.NotFound, "Not Found");
+        //}
 
     }
 }

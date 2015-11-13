@@ -17,8 +17,7 @@ namespace Library.WebApi.Migrations
 
         protected override void Seed(Library.WebApi.Data.LibraryDbContext context)
         {
-           // context.Database.Delete();
-            // context.Database.Delete();
+          
             //Author keenKeze = new Author()
             //{
             //    FirstName = " ен",
