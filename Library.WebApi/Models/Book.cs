@@ -24,6 +24,7 @@ namespace Library.WebApi.Models
         [JsonIgnore]
         public int CategoryId { get; set; }
         [Required]
+       // [DataType()]
         public string BookName { get; set; }
         public int NumberOfPages { get; set; }
         /// <summary>
@@ -33,8 +34,6 @@ namespace Library.WebApi.Models
         [Column(TypeName = "image")]
         [JsonIgnore]
         public byte[] ImageOfBook { get; set; }
-        [JsonIgnore]
-        public byte[] FileTxt { get; set; }
         public string ISBN { get; set; }
         public virtual Author Author { get; set; }
 
