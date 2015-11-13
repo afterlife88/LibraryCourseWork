@@ -28,7 +28,8 @@ namespace Library.WebApi.Controllers
             return NotFound();
         }
         /// <summary>
-        /// Reg from body
+        /// Псевдо рега, просто создавать юзера с этого места
+        /// в теле передавать имя фамилию и пасс 
         /// </summary>
         /// <param name="user"></param>
         /// <returns></returns>
@@ -42,7 +43,7 @@ namespace Library.WebApi.Controllers
             return Ok(regUser);
         }
         /// <summary>
-        /// add books to user
+        /// Добавляет книгу к пользователю, по сути передавай название книги и в урл айди юзера
         /// </summary>
         /// <param name="id">user id</param>
         /// <param name="book">object of book</param>
@@ -58,6 +59,12 @@ namespace Library.WebApi.Controllers
             }
             return NotFound();
         }
+        /// <summary>
+        /// Так же как добавлять, укзаывать в теле название книги и айдишку юзера в урл
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="book"></param>
+        /// <returns></returns>
         [Route("api/users/removebook/{id}")]
         [HttpPost]
         public async Task<IHttpActionResult> RemoveBook(int id, [FromBody] Book book)
