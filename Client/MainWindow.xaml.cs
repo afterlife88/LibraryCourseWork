@@ -14,6 +14,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Client.DAO;
+using Client.Models;
+using Newtonsoft.Json;
 
 namespace Client
 {
@@ -25,22 +28,13 @@ namespace Client
         public MainWindow()
         {
             InitializeComponent();
+            Do();
         }
 
-        private async void Get()
+        private async void Do()
         {
-            HttpClient client = new HttpClient();
-            client.BaseAddress = new Uri("http://localhost:30923/");
-            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            HttpResponseMessage x = await client.GetAsync("api/books/");
-            string content = await x.Content.ReadAsStringAsync();
-
-            MessageBox.Show(content);
-        }
-
-        private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
-        {
-            Get();
+            MessageBox.Show((await UsersDAO.ValidateUser(await UsersDAO.GetUser(1))).ToString());
+            MessageBox.Show((await UsersDAO.ValidateUser(new User())).ToString());
         }
     }
 }

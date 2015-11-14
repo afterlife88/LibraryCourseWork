@@ -37,6 +37,5 @@ namespace Library.WebApi.Models
         public virtual Author Author { get; set; }
         public virtual ICollection<User> OwnersUsers { get; set; }
         public virtual Category Category { get; set; }
-
     }
 }

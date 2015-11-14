@@ -5,8 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Client"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
-    <Grid>
-        <Button Click="ButtonBase_OnClick" Margin="95,101,91,104">Get</Button>
-    </Grid>
+        Title="MainWindow" Height="350" Width="525"
+        DataContext="{Binding Main, Source={StaticResource Locator}}">
+    <DockPanel LastChildFill="True">
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="File">
+                <MenuItem Header="Books" Command="{Binding BooksViewCommand}"></MenuItem>
+                <MenuItem Header="Authors" Command="{Binding AuthorsViewCommand}"></MenuItem>
+            </MenuItem>
+        </Menu>
+        <ContentControl Content="{Binding CurrentViewModel}"></ContentControl>
+    </DockPanel>
 </Window>
