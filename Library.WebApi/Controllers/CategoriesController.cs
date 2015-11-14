@@ -19,7 +19,13 @@ namespace Library.WebApi.Controllers
         {
             _repository = repository;
         }
-
+        [Route("api/category/orderasc")]
+        [HttpGet]
+        public async Task<IHttpActionResult> GetAsc()
+        {
+            var books = await _repository.GetOrderByAsc();
+            return Ok(books);
+        }
         /// <summary>
         /// return all categiries
         /// </summary>

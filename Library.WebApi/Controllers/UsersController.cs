@@ -16,7 +16,13 @@ namespace Library.WebApi.Controllers
         {
             _repository = repository;
         }
-
+        [Route("api/users")]
+        [HttpGet]
+        public async Task<IHttpActionResult> GetAll()
+        {
+            var users = await _repository.GetAllUsers();
+            return Ok(users);
+        }
         [Route("api/users/{id}")]
         public async Task<IHttpActionResult> GetUser(int id)
         {
@@ -34,10 +40,11 @@ namespace Library.WebApi.Controllers
         /// <param name="user"></param>
         /// <returns></returns>
         [HttpPost]
+        [Route("api/users")]
         public async Task<IHttpActionResult> RegistrateUser([FromBody] User user)
         {
-            if (!ModelState.IsValid)
-                return BadRequest(ModelState);
+            //if (!ModelState.IsValid)
+            //    return BadRequest(ModelState);
 
             var regUser = await _repository.RegistrateUser(user);
             return Ok(regUser);

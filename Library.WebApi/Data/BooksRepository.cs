@@ -26,6 +26,13 @@ namespace Library.WebApi.Data
         {
             return  _dbContext.Books.AsQueryable<Book>();
         }
+
+        public async Task<IEnumerable<Book>> GetOrderByAsc()
+        {
+            var list = await _dbContext.Books.ToArrayAsync();
+            return list.OrderBy(r => r.BookName);
+        }
+
         public async Task<Book> GetAsync(int id)
         {
             return await _dbContext.Books.SingleOrDefaultAsync(r => r.BookId == id);

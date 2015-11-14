@@ -34,7 +34,7 @@ namespace Library.WebApi.Data
             var item = await _dbContext.Categories.SingleOrDefaultAsync(r => r.CategoryId == id);
             return item?.Books.ToArray();
         }
-    
+
         public async Task<Category> AddAsync(Category item)
         {
             var existingCategory =
@@ -62,6 +62,13 @@ namespace Library.WebApi.Data
         {
             throw new NotImplementedException();
         }
+
+        public async Task<IEnumerable<Book>> GetOrderByAsc()
+        {
+            var list = await _dbContext.Books.ToArrayAsync();
+            return list.OrderBy(r => r.Category.CategoryName);
+        }
+
         public void Dispose(bool disposing)
         {
             if (!_disposed)

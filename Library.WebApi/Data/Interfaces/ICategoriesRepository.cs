@@ -14,5 +14,6 @@ namespace Library.WebApi.Data.Interfaces
         Task<Category> UpdateAsync(Category item);
         Task<IEnumerable> GetBooksByCategoryAsync(int id);
         Task<object> RemoveAsync(Category item);
+        Task<IEnumerable<Book>> GetOrderByAsc();
     }
 }

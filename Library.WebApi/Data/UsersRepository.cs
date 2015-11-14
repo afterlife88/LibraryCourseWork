@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Threading.Tasks;
 using Library.WebApi.Data.Interfaces;
@@ -23,6 +24,11 @@ namespace Library.WebApi.Data
                 return user;
             }
             return null;
+        }
+
+        public async Task<IEnumerable<User>> GetAllUsers()
+        {
+            return await _dbContext.Users.ToArrayAsync();
         }
         public async Task<User> ValidateUser(User user)
         {

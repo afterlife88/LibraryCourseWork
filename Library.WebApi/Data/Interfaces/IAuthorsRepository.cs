@@ -15,5 +15,6 @@ namespace Library.WebApi.Data.Interfaces
         Task<object> RemoveAsync(int id);
         Task<IEnumerable> GetBooksByAuthor(int id);
         Task<IEnumerable> GetBooksByAuthor(string lastName);
+        Task<IEnumerable<Book>> GetOrderByAsc();
     }
 }
