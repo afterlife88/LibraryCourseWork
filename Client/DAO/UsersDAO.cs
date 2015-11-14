@@ -11,6 +11,21 @@ namespace Client.DAO
 {
     public static class UsersDAO
     {
+        public static async Task<IEnumerable<User>> GetUsers()
+        {
+            //HttpResponseMessage response = await DAO.Client.GetAsync("api/users/");
+            //string content = await response.Content.ReadAsStringAsync();
+
+            //return JsonConvert.DeserializeObject<IEnumerable<User>>(content);
+
+
+            HttpResponseMessage response = await DAO.Client.GetAsync("api/users/1");
+            string content = await response.Content.ReadAsStringAsync();
+
+            return new List<User>(new [] {JsonConvert.DeserializeObject<User>(content)});
+            return null;
+        }
+
         public static async Task<User> GetUser(int id)
         {
             HttpResponseMessage response = await DAO.Client.GetAsync($"api/users/{id}");

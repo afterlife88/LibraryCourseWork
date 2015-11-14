@@ -12,17 +12,27 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Client.Interfaces;
+using Client.Models;
+using Client.ViewModel;
 
 namespace Client.Views
 {
     /// <summary>
-    /// Interaction logic for BooksView.xaml
+    /// Interaction logic for AttachBookToUserView.xaml
     /// </summary>
-    public partial class BooksView : UserControl
+    public partial class AttachBookToUserView : UserControl, IAttachBookToUserView
     {
-        public BooksView()
+        public AttachBookToUserView()
         {
             InitializeComponent();
+
+            (DataContext as AttachBookToUserViewModel).AttachBookToUserView = this as IAttachBookToUserView;
+        }
+
+        public void SetListBox(IEnumerable<User> collection)
+        {
+            ListBoxUsers.ItemsSource = collection;
         }
     }
 }

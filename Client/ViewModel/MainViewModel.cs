@@ -20,8 +20,9 @@ namespace Client.ViewModel
     {
         private ViewModelBase _currentViewModel;
 
-        readonly static BooksViewModel _booksViewModel = new BooksViewModel();
-        readonly static AuthorsViewModel _authorsViewModel = new AuthorsViewModel();
+        readonly static NewUserViewModel _newUserViewModel = new NewUserViewModel();
+        readonly static NewBookViewModel _newBookViewModel = new NewBookViewModel();
+        readonly static AttachBookToUserViewModel _attachBookToUserViewModel = new AttachBookToUserViewModel();
 
         public ViewModelBase CurrentViewModel
         {
@@ -38,25 +39,31 @@ namespace Client.ViewModel
             }
         }
 
-        public ICommand BooksViewCommand { get; private set; }
-        public ICommand AuthorsViewCommand { get; private set; }
+        public ICommand NewUserViewCommand { get; private set; }
+        public ICommand NewBookViewCommand { get; private set; }
+        public ICommand AttachBookToUserCommand { get; private set; }
 
         public MainViewModel()
         {
-            CurrentViewModel = MainViewModel._booksViewModel;
+            CurrentViewModel = _newUserViewModel;
 
-            BooksViewCommand = new RelayCommand(ExecuteBooksViewCommand);
-            AuthorsViewCommand = new RelayCommand(ExecuteAuthorsViewCommand);
+            NewUserViewCommand = new RelayCommand(ExecuteNewUserViewCommand);
+            NewBookViewCommand = new RelayCommand(ExecuteNewBookViewCommand);
+            AttachBookToUserCommand = new RelayCommand(ExecuteAttachBookToUserCommand);
         }
 
-        private void ExecuteBooksViewCommand()
+        private void ExecuteNewUserViewCommand()
         {
-            CurrentViewModel = MainViewModel._booksViewModel;
+            CurrentViewModel = MainViewModel._newUserViewModel;
         }
 
-        private void ExecuteAuthorsViewCommand()
+        private void ExecuteNewBookViewCommand()
         {
-            CurrentViewModel = MainViewModel._authorsViewModel;
+            CurrentViewModel = MainViewModel._newBookViewModel;
+        }
+        private void ExecuteAttachBookToUserCommand()
+        {
+            CurrentViewModel = MainViewModel._attachBookToUserViewModel;
         }
     }
 }

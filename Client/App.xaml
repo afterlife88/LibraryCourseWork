@@ -10,11 +10,19 @@
              StartupUri="MainWindow.xaml" >
     <Application.Resources>
         <vm:ViewModelLocator x:Key="Locator" d:IsDataSource="True" xmlns:vm="clr-namespace:Client.ViewModel" />
-        <DataTemplate DataType="{x:Type vm:BooksViewModel}">
-            <views:BooksView />
+
+        <vm:NewUserViewModel x:Key="NewUserViewModel" />
+        <vm:NewBookViewModel x:Key="NewBookViewModel" />
+        <vm:AttachBookToUserViewModel x:Key="AttachBookToUserViewModel" />
+
+        <DataTemplate DataType="{x:Type vm:NewBookViewModel}">
+            <views:NewBookView />
         </DataTemplate>
-        <DataTemplate DataType="{x:Type vm:AuthorsViewModel}">
-            <views:AuthorsView />
+        <DataTemplate DataType="{x:Type vm:NewUserViewModel}">
+            <views:NewUserView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:AttachBookToUserViewModel}">
+            <views:AttachBookToUserView />
         </DataTemplate>
     </Application.Resources>
 </Application>

@@ -80,19 +80,25 @@
     <Compile Include="DAO\CategoriesDAO.cs" />
     <Compile Include="DAO\DAO.cs" />
     <Compile Include="DAO\UsersDAO.cs" />
+    <Compile Include="Interfaces\IAttachBookToUserView.cs" />
+    <Compile Include="Interfaces\IPasswordProperty.cs" />
     <Compile Include="Models\Author.cs" />
     <Compile Include="Models\Book.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\User.cs" />
-    <Compile Include="ViewModel\AuthorsViewModel.cs" />
-    <Compile Include="ViewModel\BooksViewModel.cs" />
+    <Compile Include="ViewModel\AttachBookToUserViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
+    <Compile Include="ViewModel\NewBookViewModel.cs" />
+    <Compile Include="ViewModel\NewUserViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
-    <Compile Include="Views\AuthorsView.xaml.cs">
-      <DependentUpon>AuthorsView.xaml</DependentUpon>
+    <Compile Include="Views\AttachBookToUserView.xaml.cs">
+      <DependentUpon>AttachBookToUserView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\BooksView.xaml.cs">
-      <DependentUpon>BooksView.xaml</DependentUpon>
+    <Compile Include="Views\NewBookView.xaml.cs">
+      <DependentUpon>NewBookView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\NewUserView.xaml.cs">
+      <DependentUpon>NewUserView.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -106,11 +112,15 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Views\AuthorsView.xaml">
+    <Page Include="Views\AttachBookToUserView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\BooksView.xaml">
+    <Page Include="Views\NewBookView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\NewUserView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -7,7 +7,7 @@ using GalaSoft.MvvmLight;
 
 namespace Client.ViewModel
 {
-    class AuthorsViewModel : ViewModelBase
+    class NewBookViewModel : ViewModelBase
     {
     }
 }

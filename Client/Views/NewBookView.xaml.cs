@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net.Http;
-using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -14,18 +12,15 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Client.DAO;
-using Client.Models;
-using Newtonsoft.Json;
 
-namespace Client
+namespace Client.Views
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for NewBookView.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class NewBookView : UserControl
     {
-        public MainWindow()
+        public NewBookView()
         {
             InitializeComponent();
         }
