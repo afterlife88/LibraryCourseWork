@@ -26,6 +26,7 @@ bin/
 obj/
 TestResults/
 packages/
+App_Data/
 ###################
 # Web publish log #
 ###################
@@ -74,4 +75,3 @@ _[Ss]cripts
 *.ncrunchsolution
 *.dot[Cc]over
 .vs
-json.json
