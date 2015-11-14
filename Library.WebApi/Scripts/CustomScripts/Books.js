@@ -35,7 +35,7 @@
             success: function (booksArray) {
                 var table = $("#booksTable");
                 table.empty();
-                table.append('<tr><td><b>#</b></td><td><b><a class=\"authorDsc\" id=\"' + oderAscAuthors + '\" href=\"#\">Author</a></b></td><td><b>Category</b></td><td><b><a class=\"booksAsc\" id=\"' + orderAscBooks + '\" href=\"#\">Book Name</a></b></td><td><b>Books left</b></td></tr>');
+                table.append('<tr><td><b>#</b></td><td><b><a class=\"authorDsc\" id=\"' + oderAscAuthors + '\" href=\"#\">Author</a></b></td><td><b><a class=\"categoryAsc\" id=\"' + oderAscCategory + '\" href=\"#\">Category</a></b></td><td><b><a class=\"booksAsc\" id=\"' + orderAscBooks + '\" href=\"#\">Book Name</a></b></td><td><b>Books left</b></td></tr>');
                 for (var i = 0; i < booksArray.length; i++) {
                     var k = i + 1;
                     var bookId = booksArray[i].bookId;
@@ -69,6 +69,11 @@
                     table.fadeIn(500);
                 });
                 $(".authorDsc").click(function (event) {
+                    table.fadeOut(100);
+                    getBooksByUrl(event.target.id);
+                    table.fadeIn(500);
+                });
+                $(".categoryAsc").click(function (event) {
                     table.fadeOut(100);
                     getBooksByUrl(event.target.id);
                     table.fadeIn(500);
