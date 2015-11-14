@@ -37,6 +37,12 @@ namespace Library.WebApi.Data
             return item.Books.ToArray();
         }
 
+        public async Task<IEnumerable<Book>> GetOrderByAsc()
+        {
+            var list = await _dbContext.Books.ToArrayAsync();
+            return list.OrderBy(r => r.Author.FirstName);
+        }
+
         public async Task<Author> AddAsync(Author item)
         {
             Author existingAuthor = await _dbContext.Authors.SingleOrDefaultAsync(r =>

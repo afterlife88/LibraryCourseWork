@@ -16,7 +16,12 @@ namespace Library.WebApi.Controllers
         {
             _repository = repository;
         }
-
+        [Route("api/users")]
+        public async Task<IHttpActionResult> GetAll()
+        {
+            var users = await _repository.GetAllUsers();
+            return Ok(users);
+        }
         [Route("api/users/{id}")]
         public async Task<IHttpActionResult> GetUser(int id)
         {

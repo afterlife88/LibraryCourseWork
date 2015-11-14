@@ -30,6 +30,14 @@ namespace Library.WebApi.Controllers
             var books = await _repository.GettAllAsync();
             return Ok(books);
         }
+
+        [Route("api/authors/orderasc")]
+        [HttpGet]
+        public async Task<IHttpActionResult> GetAsc()
+        {
+            var books = await _repository.GetOrderByAsc();
+            return Ok(books);
+        }
         /// <summary>
         /// Get info about concrete author
         /// </summary>

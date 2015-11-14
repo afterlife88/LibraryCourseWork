@@ -31,10 +31,10 @@ namespace Library.WebApi.Controllers
         //[ResponseType(typeof(IEnumerable<Book>))]
         //public IQueryable<Book> AllBooksQueryable()
         //{
-          
+
         //    return _repository.GetAllBooksOdata();
         //}
-            /// <summary>
+        /// <summary>
         /// Return all books form db
         /// </summary>
         /// <returns></returns>
@@ -43,6 +43,13 @@ namespace Library.WebApi.Controllers
         public async Task<IHttpActionResult> Get()
         {
             var books = await _repository.GettAllAsync();
+            return Ok(books);
+        }
+        [HttpGet]
+        [Route("api/books/orderdsc")]
+        public async Task<IHttpActionResult> GetByAsc()
+        {
+            var books = await _repository.GetOrderByAsc();
             return Ok(books);
         }
         /// <summary>

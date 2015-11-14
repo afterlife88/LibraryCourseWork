@@ -14,5 +14,6 @@ namespace Library.WebApi.Data.Interfaces
         Task<User> GetUser(int id);
         Task<Book> AddBook(int id, Book book);
         Task<Book> RemoveBook(int id, Book item);
+        Task<IEnumerable<User>> GetAllUsers();
     }
 }
