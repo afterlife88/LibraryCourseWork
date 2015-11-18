@@ -5,14 +5,44 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Client.Views"
              DataContext="{StaticResource AttachBookToUserViewModel}"
-             mc:Ignorable="d" Background="AntiqueWhite" Height="168.085" Width="391.489">
-    <Grid>
-        <ListBox x:Name="ListBoxUsers" HorizontalAlignment="Left" Height="148" Margin="10,10,0,0" VerticalAlignment="Top" Width="100" ItemsSource="{Binding Users}">
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <TextBlock Text="{Binding Name}"/>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
-    </Grid>
+             mc:Ignorable="d" Background="AntiqueWhite" Height="300" Width="600">
+    
+    <StackPanel>
+        <DockPanel Height="250">
+            <ListBox DockPanel.Dock="Left" x:Name="ListBoxUsers" Margin="10" ItemsSource="{Binding Users}" SelectedItem="{Binding SelectedUser}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding Name}"/>
+                            <TextBlock Text=" "></TextBlock>
+                            <TextBlock Text="{Binding Surname}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+            <ListBox DockPanel.Dock="Left" x:Name="ListBoxBooks" Margin="10" ItemsSource="{Binding Books}" SelectedItem="{Binding SelectedBook}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding BookName}"></TextBlock>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+            <ListBox DockPanel.Dock="Left" x:Name="ListBoxUsersThatHaveBook" Margin="10" ItemsSource="{Binding UsersThatHaveBook}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding Name}"/>
+                            <TextBlock Text=" "></TextBlock>
+                            <TextBlock Text="{Binding Surname}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </DockPanel>
+        <DockPanel>
+            <Button Content="Добавить книгу пользователю" Command="{Binding AttachBookToUserCommand}" Width="200"></Button>
+        </DockPanel>
+    </StackPanel>
 </UserControl>

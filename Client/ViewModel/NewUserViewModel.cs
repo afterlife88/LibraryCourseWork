@@ -46,7 +46,8 @@ namespace Client.ViewModel
             LastName = string.Empty;
             NewUserView.SetPassword(string.Empty);
 
-            await UsersDAO.CreateUser(user);
+            if (await UsersDAO.CreateUser(user))
+                MessageBox.Show("Пользователь создан успешно");
         }
     }
 }

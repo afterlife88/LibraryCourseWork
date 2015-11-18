@@ -10,6 +10,8 @@ namespace Client.Interfaces
 {
     public interface IAttachBookToUserView
     {
-        void SetListBox(IEnumerable<User> collection);
+        void SetUsers(IEnumerable<User> collection);
+        void SetBooks(IEnumerable<Book> collection);
+        void SetUsersThatHaveBook(IEnumerable<User> collection);
     }
 }

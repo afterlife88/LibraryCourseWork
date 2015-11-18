@@ -30,9 +30,19 @@ namespace Client.Views
             (DataContext as AttachBookToUserViewModel).AttachBookToUserView = this as IAttachBookToUserView;
         }
 
-        public void SetListBox(IEnumerable<User> collection)
+        public void SetUsers(IEnumerable<User> collection)
         {
             ListBoxUsers.ItemsSource = collection;
+        }
+
+        public void SetBooks(IEnumerable<Book> collection)
+        {
+            ListBoxBooks.ItemsSource = collection;
+        }
+
+        public void SetUsersThatHaveBook(IEnumerable<User> collection)
+        {
+            ListBoxUsersThatHaveBook.ItemsSource = collection;
         }
     }
 }

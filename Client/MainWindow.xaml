@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Client"
         mc:Ignorable="d"
-        Title="Менеджер библиотеки" Height="350" Width="525"
+        Title="Менеджер библиотеки" Height="350" Width="650"
         WindowStartupLocation="CenterScreen"
         DataContext="{Binding Main, Source={StaticResource Locator}}">
     <DockPanel LastChildFill="True" Background="AntiqueWhite">
